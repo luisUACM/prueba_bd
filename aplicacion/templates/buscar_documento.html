@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" 
+            integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+            crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form hx-get="/documento/ver" hx-swap="afterend" target="#div-pdf">
+            <label> Nombre
+                <input type="text" name="nombre"/>
+            </label>
+            <br/>
+            <label> Buscar documento
+                <input type="submit"/>
+            </label>
+        </form>
+        <form method="POST" action="/documento/crear">
+            <label> Ingresa un texto
+                <input type="text" name="form-texto"/>
+            </label>
+            <br/>
+            <label> Crear documento
+                <input type="submit"/>
+            </label>
+        </form>
+        <div id="div-pdf"></div>
+    </body>
+</html>
