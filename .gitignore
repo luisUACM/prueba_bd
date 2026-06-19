@@ -1,4 +1,6 @@
-/venv
-!**/__pycache__/
+# Entorno virtual
+venv/
 
-
+# Python cache
+__pycache__/
+*.py[cod]

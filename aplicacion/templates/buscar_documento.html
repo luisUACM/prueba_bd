@@ -6,7 +6,7 @@
             crossorigin="anonymous"></script>
     </head>
     <body>
-        <form hx-get="/documento/ver" hx-swap="afterend" target="#div-pdf">
+        <form hx-get="/documento/ver" hx-swap="afterend" hx-target="#div-pdf">
             <label> Nombre
                 <input type="text" name="nombre"/>
             </label>
@@ -15,7 +15,7 @@
                 <input type="submit"/>
             </label>
         </form>
-        <form method="POST" action="/documento/crear">
+        <form hx-post="/documento/crear" hx-swap="afterend" hx-target="#div-pdf">
             <label> Ingresa un texto
                 <input type="text" name="form-texto"/>
             </label>

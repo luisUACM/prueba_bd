@@ -7,6 +7,7 @@
 <body>
     <h1>Prueba de Construcción de Documento PDF</h1>
     <p>Texto: {{ informacion }}</p>
-
+    {{ url_for('imagenes', filename=nombre_imagen) }}
+    <img src="{{ url_for('imagenes', filename=nombre_imagen) }}"/>
 </body>
 </html>

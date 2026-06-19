@@ -3,10 +3,14 @@ from aplicacion.database.config import db
 
 def crear_app():
     
+    FOLDER_DOCUMENTOS = './documentos'
+    
     app = Flask(__name__)
                                                                    #usuario :  contraseña              /nombre_bd
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://admin_agent:9q70MdN915@localhost/isolated_db_test'
     app.config['DEBUG'] = True
+
+    app.config['FOLDER_DOCUMENTOS'] = FOLDER_DOCUMENTOS
     
     db.init_app(app)
 
