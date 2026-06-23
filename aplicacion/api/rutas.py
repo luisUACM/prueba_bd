@@ -10,6 +10,7 @@ from aplicacion.database.config import db
 from datetime import date, datetime
 from flask import redirect
 from flask import url_for
+from weasyprint import CSS
 
 @app.route('/documento')
 def usuario_guardar():
@@ -25,10 +26,6 @@ def documento_get():
 def documentos(filename):
     return send_from_directory('../documentos', filename)
 
-@app.route('/imagenes/<path:filename>')
-def imagenes(filename):
-    return send_from_directory('../documentos/imagenes', filename)
-
 @app.post('/documento/crear')
 def crear_documento():
     texto = request.form.get('form-texto')
@@ -43,8 +40,9 @@ def crear_documento():
     )
     nombre_archivo = f'{texto}.pdf'
 
-    HTML(string=html).write_pdf(app.config['FOLDER_DOCUMENTOS'] + '/' + nombre_archivo)
-
+    css = CSS(string="img { width: 100px; height: 100px; }")
+    HTML(string=html, base_url=app.config['DIRECTORIO_BASE'] + '/documentos/imagenes').write_pdf(app.config['FOLDER_DOCUMENTOS'] + '/' + nombre_archivo, stylesheets=[css])
+    
     documento_evento = DocumentoEvento()
     documento_evento.fecha_expiracion = date.today()
     documento_evento.hora_expiracion = datetime.now().time()

@@ -1,9 +1,11 @@
 from flask import Flask
 from aplicacion.database.config import db
+import os
 
 def crear_app():
     
     FOLDER_DOCUMENTOS = './documentos'
+    DIRECTORIO_BASE = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
     
     app = Flask(__name__)
                                                                    #usuario :  contraseña              /nombre_bd
@@ -11,6 +13,7 @@ def crear_app():
     app.config['DEBUG'] = True
 
     app.config['FOLDER_DOCUMENTOS'] = FOLDER_DOCUMENTOS
+    app.config['DIRECTORIO_BASE'] = DIRECTORIO_BASE
     
     db.init_app(app)
 
