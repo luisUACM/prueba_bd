@@ -40,7 +40,7 @@ def crear_documento():
     )
     nombre_archivo = f'{texto}.pdf'
 
-    css = CSS(string="img { width: 100px; height: 100px; }")
+    css = CSS('./aplicacion/static/css/cartas.css')
     HTML(string=html, base_url=app.config['DIRECTORIO_BASE'] + '/documentos/imagenes').write_pdf(app.config['FOLDER_DOCUMENTOS'] + '/' + nombre_archivo, stylesheets=[css])
     
     documento_evento = DocumentoEvento()
